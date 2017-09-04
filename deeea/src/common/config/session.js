@@ -6,7 +6,7 @@
 export default {
     name: 'thinkjs',
     type: 'file',
-    secret: 'QUH4I1M5',
+    secret: 'PNRW8CV5',
     timeout: 24 * 3600,
     cookie: { // cookie options
         length: 32,

@@ -3,7 +3,7 @@
  * db config
  * @type {Object}
  */
-export default {
+//export default {
 //type: 'mysql',
 //adapter: {
 //  mysql: {
@@ -19,4 +19,4 @@ export default {
 //
 //  }
 //}
-};
+//};

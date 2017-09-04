@@ -1,9 +1,9 @@
 {
   "apps": [
     {
-      "name": "C:UsersAdministratorDesktopdemoAppC:UsersAdministratorDesktopdemoApp",
+      "name": "E:RingDEEEAE:RingDEEEAdeeea",
       "script": "www/production.js",
-      "cwd": "C:\Users\Administrator\Desktop\demoApp",
+      "cwd": "E:\Ring\DEEEA\deeea",
       "exec_mode": "cluster",
       "instances": 0,
       "max_memory_restart": "1G",
@@ -11,7 +11,8 @@
       "node_args": [],
       "args": [],
       "env": {
-      }
+      
+    }
     }
   ]
 }
