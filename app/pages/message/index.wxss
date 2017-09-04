@@ -1,0 +1,46 @@
+/* pages/message/index.wxss */
+
+.message-img{
+  height: 300rpx;
+  overflow: hidden;
+}
+.message-image{
+  width: 720rpx;
+  height: 720rpx;
+  margin-left:15rpx; 
+}
+.messageForm{
+  display: block;
+  width: 700rpx;
+  height: 700rpx;
+  margin:25rpx; 
+}
+.section{
+  color: #888888;
+  margin: 10rpx 0;
+}
+.section label,.radio-group label{
+  display: inline-block;
+  width: 200rpx;
+  font-size: 32rpx;
+}
+.section radio{
+  width: 70rpx;
+}
+.input-group{
+  padding: 20rpx 0;
+}
+.messageForm input[type=text]{
+  height: 70rpx;
+  padding: 0 20rpx;
+  border: 1px solid #b2b2b2;
+  font-size: 32rpx;
+  color: #888888;
+  margin: 20rpx 0;
+  border-radius: 10rpx;
+}
+.subBtn{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 50rpx;
+}

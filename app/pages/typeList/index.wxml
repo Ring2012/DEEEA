@@ -1,0 +1,15 @@
+<!--pages/typeList/index.wxml-->
+<view class="page">
+  <image src="../img/{{typeUrls}}" class="type-image"/>
+  <view class="typeList">
+    <scroll-view scroll-y="true">
+      <view class="tp-list" wx:for="{{typeList}}" data-tabDetailId="{{item.id}}" bindtap="tabDetailTap">
+        <image class="tp-img" src="../img/{{item.tcImg}}"></image>
+        <view class="tp-text">
+          <text class="tp-title">{{item.tcTit}}y</text>
+          <text class="tp-price">¥:{{item.tcPrice}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

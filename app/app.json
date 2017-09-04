@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/typeList/index",
+    "pages/discount/index",
+    "pages/detail/index",
+    "pages/message/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "1234567",
+    "navigationBarTextStyle": "black"
+  }
+}

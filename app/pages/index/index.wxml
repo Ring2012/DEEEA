@@ -1,0 +1,67 @@
+<!-- pages/index/index.wxml-->
+<view class="page">
+  <!--banner  -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{bannerUrls}}">
+      <swiper-item>
+        <image src="../img/{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--分类  -->
+  <view class="section">
+    <view class="flex-wrp">
+      <view class="flex-item" data-type="1" bindtap="detailTap">
+        <image class="type-img" src="../img/type-1.png"></image>
+        <text class="type-text">美容</text>
+      </view>
+      <view class="flex-item" data-type="4" bindtap="detailTap">
+        <image class="type-img" src="../img/type-2.png"></image>
+        <text class="type-text">美妆</text>
+      </view>
+      <view class="flex-item" data-type="3" bindtap="detailTap">
+        <image class="type-img" src="../img/type-3.png"></image>
+        <text class="type-text">塑身</text>
+      </view>
+      <view class="flex-item" data-type="0" bindtap="detailTap">
+        <image class="type-img" src="../img/type-4.png"></image>
+        <text class="type-text">优惠</text>
+      </view>
+    </view>
+  </view>
+  <!--推荐  -->
+  <view class="section">
+    <view class="recommend">
+      <view class="rmb-title">推荐</view>
+      <view class="rmb-contenr" wx:for="{{recommend}}">
+        <view class="rmb-left">
+          <image class="rmb-img" src="../img/{{item.imgUrl}}"></image>
+        </view>
+        <view class="rmb-right">
+          <view class="rmb-right-title">{{item.info}}</view>
+          <view class="rmb-right-content">
+            <text class="price">¥:{{item.price}}</text>
+            <text class="yuyue" data-rmbId="{{item.type}}" bindtap="recommendTap">立即预约</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--tab  -->
+  <view class="tab">
+    <scroll-view class="tabList" scroll-x="true">
+      <view class="tab-item {{tabItem == item.type ? 'itrmActive':''}}" wx:for="{{tab}}" data-type="{{item.type}}" bindtap="tabTap">{{item.tabTit}}</view>
+    </scroll-view>
+  </view>
+  <view class="tabContent">
+    <view class="tc-center">
+      <view class="tc-center-list" wx:for="{{tabContent}}" data-tabDetailId="{{item.type}}" bindtap="tabDetailTap">
+        <image class="tc-cente-img" src="../img/{{item.imgUrl}}"></image>
+        <view class="tc-cente-text">
+          <text class="tc-title">{{item.title}}</text>
+          <text class="tc-price">¥:{{item.price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
