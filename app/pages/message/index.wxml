@@ -1,18 +1,21 @@
 <!--pages/message/index.wxml-->
 <view class="message">
   <view class="message-img">
-    <image src="../img/rmb-1.png" class="message-image" />
+    <image src="../img/{{imgUrl}}" class="message-image" />
   </view>
   <form bindsubmit="formSubmit" class="messageForm">
 
     <view class="section">
-      <label>服务类型:</label>1234566
+      <label>服务类型:</label>{{remark}}
     </view>
     <view class="section">
-      <label>项目名称:</label>测试测试
+      <label>项目名称:</label>{{title}}
     </view>
     <view class="section">
-      <label>价格:</label>￥234
+      <label>项目时间:</label>{{time}}分钟
+    </view>
+    <view class="section">
+      <label>价格:</label>￥{{price}}
     </view>
     <radio-group class="radio-group" bindchange="radioChange">
       <label>支付方式:</label>

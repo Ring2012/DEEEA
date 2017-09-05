@@ -1,15 +1,17 @@
 <!--pages/typeList/index.wxml-->
-<view class="page">
-  <image src="../img/{{typeUrls}}" class="type-image"/>
-  <view class="typeList">
+<view class="tabContent">
     <scroll-view scroll-y="true">
-      <view class="tp-list" wx:for="{{typeList}}" data-tabDetailId="{{item.id}}" bindtap="tabDetailTap">
-        <image class="tp-img" src="../img/{{item.tcImg}}"></image>
-        <view class="tp-text">
-          <text class="tp-title">{{item.tcTit}}y</text>
-          <text class="tp-price">¥:{{item.tcPrice}}</text>
+      <view class="tc-center">
+        <view class="tc-center-list" wx:for="{{tabContent}}" data-type="{{item.type}}" data-title="{{item.title}}" bindtap="tabDetailTap">
+          <image class="tc-cente-img" src="../img/{{item.imgUrl}}"></image>
+          <view class="tc-cente-text">
+            <text class="tc-title">{{item.title}}</text>
+            <text class="tc-price">¥:{{item.price}}</text>
+          </view>
         </view>
       </view>
     </scroll-view>
   </view>
-</view>
+  <loading hidden="{{hidden}}">加载中</loading>
+  <view class="bottomLine" hidden="{{show}}" wx:if="{{bottomLine == false}}"></view>
+  <view class="bottomLine2" hidden="{{show}}" wx:if="{{bottomLine == true}}"></view>

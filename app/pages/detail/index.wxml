@@ -1,20 +1,22 @@
 <!--pages/detail/index.wxml-->
-<view class="detail">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <view class="detail">
+    <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{detailUrls}}">
       <swiper-item>
         <image src="../img/{{item}}" class="detail-image" width="355" height="150" />
       </swiper-item>
     </block>
-  </swiper>
-  <view class="detailList">
-    <view class="detail-title">{{title}}</view>
-    <text class="detail-info">{{info}}</text>
-    <text class="detail-price">¥:{{price}}</text>
+  </swiper> -->
+    <image src="../img/{{imgUrl}}" class="detail-image" width="355" height="150" />
+    <view class="detailList">
+      <view class="detail-title">{{title}}</view>
+      <text class="detail-info">{{info}}</text>
+      <text class="detail-price">¥:{{price}}</text>
+    </view>
+    <view class="detailTime">
+      <view class="detail-time">预约时长：{{time}}分钟</view>
+      <text class="detail-timer">预约时段：8:00 - 21:00</text>
+    </view>
+    <view class="order" bindtap="orderTap" data-type="{{type}}" data-title="{{title}}">立即预约</view>
   </view>
-  <view class="detailTime">
-    <view class="detail-time">预约时长：{{time}}分钟</view>
-    <text class="detail-timer">预约时段：{{timer}}</text>
-  </view>
-  <view class="order" bindtap="orderTap">立即预约</view>
-</view>
+  <loading hidden="{{hidden}}"></loading>

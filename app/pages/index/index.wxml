@@ -10,12 +10,12 @@
   </swiper>
   <!--分类  -->
   <view class="section">
-    <view class="flex-wrp">
+    <view class="flex-wrp" hidden="{{show}}">
       <view class="flex-item" data-type="1" bindtap="detailTap">
         <image class="type-img" src="../img/type-1.png"></image>
-        <text class="type-text">美容</text>
+        <text class="type-text">美容{{type}}</text>
       </view>
-      <view class="flex-item" data-type="4" bindtap="detailTap">
+      <view class="flex-item" data-type="5" bindtap="detailTap">
         <image class="type-img" src="../img/type-2.png"></image>
         <text class="type-text">美妆</text>
       </view>
@@ -32,7 +32,7 @@
   <!--推荐  -->
   <view class="section">
     <view class="recommend">
-      <view class="rmb-title">推荐</view>
+      <view class="rmb-title" hidden="{{show}}">推荐</view>
       <view class="rmb-contenr" wx:for="{{recommend}}">
         <view class="rmb-left">
           <image class="rmb-img" src="../img/{{item.imgUrl}}"></image>
@@ -41,7 +41,7 @@
           <view class="rmb-right-title">{{item.info}}</view>
           <view class="rmb-right-content">
             <text class="price">¥:{{item.price}}</text>
-            <text class="yuyue" data-rmbId="{{item.type}}" bindtap="recommendTap">立即预约</text>
+            <text class="yuyue" data-type="{{item.type}}" data-title="{{item.title}}" bindtap="recommendTap">立即预约</text>
           </view>
         </view>
       </view>
@@ -54,14 +54,21 @@
     </scroll-view>
   </view>
   <view class="tabContent">
-    <view class="tc-center">
-      <view class="tc-center-list" wx:for="{{tabContent}}" data-tabDetailId="{{item.type}}" bindtap="tabDetailTap">
-        <image class="tc-cente-img" src="../img/{{item.imgUrl}}"></image>
-        <view class="tc-cente-text">
-          <text class="tc-title">{{item.title}}</text>
-          <text class="tc-price">¥:{{item.price}}</text>
+    <scroll-view scroll-y="true">
+      <view class="tc-center">
+        <view class="tc-center-list" wx:for="{{tabContent}}" data-type="{{item.type}}" data-title="{{item.title}}" bindtap="tabDetailTap">
+          <image class="tc-cente-img" src="../img/{{item.imgUrl}}"></image>
+          <view class="tc-cente-text">
+            <text class="tc-title">{{item.title}}</text>
+            <text class="tc-price">¥:{{item.price}}</text>
+          </view>
         </view>
       </view>
-    </view>
+    </scroll-view>
   </view>
+  <loading hidden="{{hidden}}">
+  拼命加载中...
+  </loading>
+  <view class="bottomLine" hidden="{{show}}" wx:if="{{bottomLine == false}}"></view>
+  <view class="bottomLine2" hidden="{{show}}" wx:if="{{bottomLine == true}}"></view>
 </view>

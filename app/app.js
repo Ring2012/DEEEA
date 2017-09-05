@@ -24,6 +24,6 @@ App({
 
     globalData: {
         userInfo: null,
-        backendUrl: "http://deeea.ngrok.cc"
+        backendUrl: "http://deeea.viphk.ngrok.org/"
     }
 })

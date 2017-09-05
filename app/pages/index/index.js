@@ -5,8 +5,11 @@ Page({
         bannerUrls: [],//banner url
         recommend: [],//推荐列表
         tab: [],//分类
-        tabItem: [5],//添加类
+        tabItem: 5,//默认类
         tabContent: [],//分类列表
+        show: true,
+        hidden: false,
+        bottomLine: false,
         indicatorDots: true,
         autoplay: true,
         interval: 5000,
@@ -51,6 +54,7 @@ Page({
                         type: resp.data[i].type,
                         imgUrl: resp.data[i].imgUrl,
                         info: resp.data[i].info,
+                        title: resp.data[i].title,
                         price: resp.data[i].price
                     });
                 }
@@ -89,11 +93,21 @@ Page({
         //调用方法获取分类内容列表
         wx.request({
             url: app.globalData.backendUrl + '/home/index/page',
+            data: {
+                type: that.data.tabItem
+            },
             success: function (res) {
-                console.log(res.data.data);
                 let resp = res.data.data;
                 let list = [];
-                console.log(resp.data.length);
+                if (resp.data.length == 0) {
+                    that.setData({
+                        bottomLine: true
+                    });
+                } else {
+                    that.setData({
+                        bottomLine: false
+                    });
+                }
                 for (var i = 0; i < resp.data.length; i++) {
                     list.push({
                         type: resp.data[i].type,
@@ -104,7 +118,9 @@ Page({
                 }
                 //处理数据仓库
                 that.setData({
-                    tabContent: list
+                    tabContent: list,
+                    hidden: true,
+                    show: false
                 })
 
             }
@@ -113,9 +129,9 @@ Page({
     //事件处理函数
     detailTap: function (e) {//分类
         var that = this
-        var Id = e.currentTarget.id;//获取当前id
-        wx.setStorageSync('tabId', Id);//储存当前id
-        if (Id != 0) {
+        let type = e.currentTarget.dataset.type;//获取当前分类
+        wx.setStorageSync('type', type);//储存当前分类
+        if (type != 0) {
             wx.navigateTo({
                 url: '../typeList/index'
             })
@@ -125,19 +141,27 @@ Page({
             })
         }
     },
-    recommendTap: function () {
+    recommendTap: function (e) {//立即预约
+        let type = e.currentTarget.dataset.type;//获取当前分类
+        let title = e.currentTarget.dataset.title;//获取当前标题
+        wx.setStorageSync('type', type);//储存当前分类
+        wx.setStorageSync('title', title);//储存当前标题
         wx.navigateTo({
             url: '../message/index'
         })
     },
     tabTap: function (e) {//选项卡
-        var that = this;
         var typeId = e.currentTarget.dataset.type;//获取当前typeId
-        that.setData({
+        this.setData({
             'tabItem': typeId
-        })
+        });
+        this.getTabList();
     },
     tabDetailTap: function (e) {//详情
+        let type = e.currentTarget.dataset.type;//获取当前分类
+        let title = e.currentTarget.dataset.title;//获取当前标题
+        wx.setStorageSync('type', type);//储存当前分类
+        wx.setStorageSync('title', title);//储存当前标题
         wx.navigateTo({
             url: '../detail/index'
         })
