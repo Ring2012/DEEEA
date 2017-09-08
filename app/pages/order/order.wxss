@@ -1,0 +1,42 @@
+/* pages/order/order.wxss */
+
+.page_table{
+  margin-bottom: 60rpx;
+}
+.message_image{
+  height: 200rpx;
+  overflow: hidden;
+}
+.message-image{
+  width: 720rpx;
+  height: 720rpx;
+  margin-left:15rpx; 
+}
+.table {
+  width: 720rpx;
+  margin-left:15rpx; 
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 60rpx;
+  align-items: center;
+}
+.td {
+    justify-content: center;
+    font-size:25rpx;
+}
+.bg-g{
+  background: #E6F3F9;
+}
+.bottomLine{
+  background-image: url(http://ringboss.cn/deeea/img/bottomLine.jpg);
+  background-size: 100%;
+  height: 120rpx;
+}
+.bottomLine2{
+  background-image: url(http://ringboss.cn/deeea/img/bottomLine2.jpg);
+  background-size: 100%;
+  height: 120rpx;
+}

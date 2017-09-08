@@ -41,12 +41,12 @@
   font-size: 24rpx;
 }
 .bottomLine{
-  background-image: url(../img/bottomLine.jpg);
+  background-image: url(http://ringboss.cn/deeea/img/bottomLine.jpg);
   background-size: 100%;
   height: 120rpx;
 }
 .bottomLine2{
-  background-image: url(../img/bottomLine2.jpg);
+  background-image: url(http://ringboss.cn/deeea/img/bottomLine2.jpg);
   background-size: 100%;
   height: 120rpx;
 }

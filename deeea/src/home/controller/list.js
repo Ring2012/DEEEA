@@ -9,13 +9,20 @@ export default class extends Base {
      * @param size 每页条数,默认8条4行
      * @param type 类型
      */
+//  async pageAction() {
+//      let page = this.get("page") || 1;
+//      let size = this.get("size") || 8;
+//      let type = this.get("type");
+//      let list = await this.model('message').where({
+//          type: type
+//      }).page(page, size).order("show_time DESC").countSelect();
+//      return this.success(list);
+//  }
     async pageAction() {
-        let page = this.get("page") || 1;
-        let size = this.get("size") || 8;
         let type = this.get("type");
         let list = await this.model('message').where({
             type: type
-        }).page(page, size).order("show_time DESC").countSelect();
+        }).order("show_time DESC").countSelect();
         return this.success(list);
     }
 }

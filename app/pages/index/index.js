@@ -21,12 +21,37 @@ Page({
         this.getTypeList();//分类
         this.getTabList();//分类列表
     },
+    onShareAppMessage: function (res) {
+        if (res.from === 'button') {
+            // 来自页面内转发按钮
+            console.log(res.target)
+        }
+        return {
+            title: '娇雅会所',
+            desc: '描述',
+            path: 'pages/index/index',
+            success: function (res) {
+                wx.showToast({
+                    title: '转发成功',
+                    icon: 'loading',
+                    duration: 1000
+                });
+            },
+            fail: function (res) {
+                wx.showToast({
+                    title: '转发失败',
+                    icon: 'loading',
+                    duration: 1000
+                });
+            }
+        }
+    },
     //网络请求数据
     getBannerList: function () {
         var that = this
         //调用方法获取banner url
         wx.request({
-            url: app.globalData.backendUrl + '/home/index/banner',
+            url: app.globalData.backendUrl + '/home/login/banner',
             success: function (res) {
                 let resp = res.data;
                 let url = [];
@@ -45,7 +70,7 @@ Page({
         var that = this
         //调用方法获取推荐列表
         wx.request({
-            url: app.globalData.backendUrl + '/home/index/recommend',
+            url: app.globalData.backendUrl + '/home/login/recommend',
             success: function (res) {
                 let resp = res.data;
                 let list = [];
@@ -70,7 +95,7 @@ Page({
         var that = this
         //调用方法获取分类列表
         wx.request({
-            url: app.globalData.backendUrl + '/home/index/type',
+            url: app.globalData.backendUrl + '/home/login/type',
             success: function (res) {
                 let resp = res.data;
                 let list = [];
@@ -92,7 +117,7 @@ Page({
         var that = this
         //调用方法获取分类内容列表
         wx.request({
-            url: app.globalData.backendUrl + '/home/index/page',
+            url: app.globalData.backendUrl + '/home/login/page',
             data: {
                 type: that.data.tabItem
             },
@@ -136,9 +161,9 @@ Page({
                 url: '../typeList/index'
             })
         } else {//优惠
-            wx.navigateTo({
-                url: '../discount/index'
-            })
+            // wx.navigateTo({
+            //     url: '../discount/index'
+            // })
         }
     },
     recommendTap: function (e) {//立即预约

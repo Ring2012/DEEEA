@@ -44,3 +44,8 @@
   line-height: 80rpx;
   margin-top: 50rpx;
 }
+input[type=hidden]{
+  height:0;
+min-height:0;
+
+}

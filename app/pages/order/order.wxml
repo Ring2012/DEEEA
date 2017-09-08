@@ -1,0 +1,49 @@
+<!--pages/order/order.wxml-->
+<view>
+  <view wx:for="{{mine}}" class="page_table">
+    <view class="message_image"><image src="{{item.title_img}}" class="message-image" /></view>
+    <view class="table">
+    <view class="tr bg-g">
+        <view class="td" style="width:30%;">订单号</view>
+        <view class="td" style="width:70%;">{{item.order_number}}</view>
+      </view>
+      <view class="tr">
+        <view class="td" style="width:30%;">服务类型</view>
+        <view class="td" style="width:70%;">{{item.remark}}</view>
+      </view>
+      <view class="tr bg-g">
+        <view class="td" style="width:30%;">项目名称</view>
+        <view class="td" style="width:70%;">{{item.projectName}}</view>
+      </view>
+      <view class="tr">
+        <view class="td" style="width:30%;">项目时间</view>
+        <view class="td" style="width:70%;">{{item.time}}分钟</view>
+      </view>
+      <view class="tr bg-g">
+        <view class="td" style="width:30%;">{{item.remark}}师</view>
+        <view class="td" style="width:70%;" wx:if="{{item.beautician == 1}}">王晓芃</view>
+        <view class="td" style="width:70%;" wx:if="{{item.beautician == 2}}">王晓萌</view>
+      </view>
+      <view class="tr">
+        <view class="td" style="width:30%;">订单状态</view>
+        <view class="td" style="width:70%;" wx:if="{{item.order_status == 0}}">未完成</view>
+        <view class="td" style="width:70%;" wx:if="{{item.order_status == 1}}">完成</view>
+      </view>
+      <view class="tr bg-g">
+        <view class="td" style="width:30%;">价格</view>
+        <view class="td" style="width:70%;">{{item.price}}元</view>
+      </view>
+      <view class="tr">
+        <view class="td" style="width:30%;">支付状态</view>
+        <view class="td" style="width:70%;" wx:if="{{item.pay_status == 0}}">未支付</view>
+        <view class="td" style="width:70%;" wx:if="{{item.pay_status == 1}}">已支付</view>
+      </view>
+      <view class="tr bg-g">
+        <view class="td" style="width:30%;">服务时间</view>
+        <view class="td" style="width:70%;">{{item.servicing_time}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottomLine" hidden="{{show}}"></view>
+  <view class="bottomLine2" hidden="{{bottomLine}}"></view>
+</view>

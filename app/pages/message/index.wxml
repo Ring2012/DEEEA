@@ -1,30 +1,35 @@
 <!--pages/message/index.wxml-->
 <view class="message">
   <view class="message-img">
-    <image src="../img/{{imgUrl}}" class="message-image" />
+    <image src="{{imgUrl}}" class="message-image" />
   </view>
   <form bindsubmit="formSubmit" class="messageForm">
-
+    <input type="hidden" name="type" value="{{type}}"/>
+    <input type="hidden" name="imgUrl" value="{{imgUrl}}"/>
     <view class="section">
       <label>服务类型:</label>{{remark}}
+      <input type="hidden" name="remark" value="{{remark}}"/>
     </view>
     <view class="section">
       <label>项目名称:</label>{{title}}
+      <input type="hidden" name="title" value="{{title}}"/>
     </view>
     <view class="section">
       <label>项目时间:</label>{{time}}分钟
+      <input type="hidden" name="time" value="{{time}}"/>
     </view>
     <view class="section">
       <label>价格:</label>￥{{price}}
+      <input type="hidden" name="price" value="{{price}}"/>
     </view>
-    <radio-group class="radio-group" bindchange="radioChange">
+    <radio-group class="radio-group" name="pay_way" >
       <label>支付方式:</label>
-      <radio value="1" checked="true" />线上支付
-      <radio value="2" />到店支付
+      <radio value="1"/>线上支付
+      <radio value="2" checked="true"/>到店支付
     </radio-group>
     <view class="input-group">
-      <input type="text" name="" placeholder="姓名" />
-      <input type="text" name="" placeholder="手机号" maxlength="11" />
+      <input type="text" name="name" placeholder="姓名" />
+      <input type="text" name="phone" placeholder="手机号" maxlength="11"/>
     </view>
     <button type="primary"  formType="submit" class="subBtn">确定</button>
   </form>

@@ -1,4 +1,5 @@
 // pages/message/index.js
+var util = require('../../utils/util.js')
 var app = getApp();
 Page({
     data: {
@@ -20,17 +21,6 @@ Page({
             },
             success: function (res) {
                 let resp = res.data;
-                var list = [];
-                for (var i = 0; i < resp.data.length; i++) {
-                    list.push({
-                        type: resp.data[i].type,
-                        imgUrl: resp.data[i].imgUrl,
-                        title: resp.data[i].title,
-                        info: resp.data[i].info,
-                        price: resp.data[i].price,
-                        time: resp.data[i].time
-                    });
-                }
                 //处理数据仓库
                 that.setData({
                     type: resp.data[0].type,
@@ -45,13 +35,71 @@ Page({
             }
         })
     },
-    orderTap: function (e) {
-        var type = e.currentTarget.dataset.type;//获取当前分类
-        var title = e.currentTarget.dataset.title;//获取当前标题
-        wx.setStorageSync('type', type);//储存当前分类
-        wx.setStorageSync('title', title);//储存当前标题
-        wx.navigateTo({
-            url: '../message/index'
+    formSubmit: function (e) {
+        var formList = e.detail.value;
+        var openid = wx.getStorageSync('openid');
+        var name = formList.name;
+        var phone = formList.phone;
+        var pay_way = formList.pay_way;
+        var title = formList.title;
+        var imgUrl = formList.imgUrl;
+        var type = formList.type;
+        var remark = formList.remark;
+        var price = formList.price;
+        var time = formList.time;
+        var filterusername = /^([\u4e00-\u9fa5]){2,7}$/;
+        if (!filterusername.test(name)) {
+            wx.showToast({
+                title: '正确填写姓名',
+                icon: 'loading',
+                duration: 1000
+            });
+            return false;
+        }
+        var filterphone = /^1[34578]\d{9}$/;
+        if (phone.length == 0 || phone.length < 11 || !filterphone.test(phone)) {
+            wx.showToast({
+                title: '正确输入手机号',
+                icon: 'loading',
+                duration: 1000
+            });
+            return false;
+        }
+        wx.request({
+            url: app.globalData.backendUrl + '/home/user/form',
+            data: {
+                openid: openid,
+                name: name,
+                phone: phone,
+                pay_way: pay_way,
+                title: title,
+                imgUrl: imgUrl,
+                type: type,
+                remark: remark,
+                price: price,
+                time: time,
+                timer: util.formatTime(new Date)
+            },
+            success: function (res) {
+                if (res.statusCode == 200) {
+                    wx.showToast({
+                        title: '预约成功',
+                        icon: 'succes',
+                        duration: 1000,
+                        mask: true
+                    });
+                    wx.navigateTo({
+                        url: '../index/index'
+                    })
+                } else {
+                    wx.showToast({
+                        title: '预约失败',
+                        icon: 'loading',
+                        duration: 1000
+                    })
+                }
+            }
         })
+
     }
 })

@@ -48,7 +48,7 @@
 }
 
 .rmb-title {
-  background-image: url(../img/rmb-tit-bgpng.png);
+  background-image: url(http://ringboss.cn/deeea/img/rmb-tit-bgpng.png);
   background-size: 100%;
   text-align: center;
   line-height: 70rpx;
@@ -102,7 +102,7 @@
 }
 
 .yuyue {
-  float: right;
+  margin: -10rpx 0 0 200rpx;
   background: rgb(253, 82, 129);
   color: #fff;
   font-size: 24rpx;
@@ -182,12 +182,12 @@
   font-size: 24rpx;
 }
 .bottomLine{
-  background-image: url(../img/bottomLine.jpg);
+  background-image: url(http://ringboss.cn/deeea/img/bottomLine.jpg);
   background-size: 100%;
   height: 120rpx;
 }
 .bottomLine2{
-  background-image: url(../img/bottomLine2.jpg);
+  background-image: url(http://ringboss.cn/deeea/img/bottomLine2.jpg);
   background-size: 100%;
   height: 120rpx;
 }

@@ -1,9 +1,9 @@
 <!--pages/typeList/index.wxml-->
 <view class="tabContent">
-    <scroll-view scroll-y="true">
+    <scroll-view scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="load">
       <view class="tc-center">
         <view class="tc-center-list" wx:for="{{tabContent}}" data-type="{{item.type}}" data-title="{{item.title}}" bindtap="tabDetailTap">
-          <image class="tc-cente-img" src="../img/{{item.imgUrl}}"></image>
+          <image class="tc-cente-img" src="{{item.imgUrl}}"></image>
           <view class="tc-cente-text">
             <text class="tc-title">{{item.title}}</text>
             <text class="tc-price">¥:{{item.price}}</text>
@@ -11,7 +11,7 @@
         </view>
       </view>
     </scroll-view>
-  </view>
-  <loading hidden="{{hidden}}">加载中</loading>
-  <view class="bottomLine" hidden="{{show}}" wx:if="{{bottomLine == false}}"></view>
-  <view class="bottomLine2" hidden="{{show}}" wx:if="{{bottomLine == true}}"></view>
+	<loading hidden="{{hidden}}">加载中</loading>
+	<view class="bottomLine" hidden="{{show}}" wx:if="{{bottomLine == false}}"></view>
+	<view class="bottomLine2" hidden="{{show}}" wx:if="{{bottomLine == true}}"></view>
+</view>

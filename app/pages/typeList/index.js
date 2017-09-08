@@ -21,7 +21,7 @@ Page({
                 type: type
             },
             success: function (res) {
-                let resp = res.data.data.data;
+                let resp = res.data.data;
                 let list = [];
                 if (resp.data.length == 0) {
                     that.setData({

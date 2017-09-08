@@ -7,7 +7,7 @@
       </swiper-item>
     </block>
   </swiper> -->
-    <image src="../img/{{imgUrl}}" class="detail-image" width="355" height="150" />
+    <image src="{{imgUrl}}" class="detail-image" width="355" height="150" />
     <view class="detailList">
       <view class="detail-title">{{title}}</view>
       <text class="detail-info">{{info}}</text>
