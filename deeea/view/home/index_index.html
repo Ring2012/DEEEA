@@ -6,88 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="/static/css/style.css"/>
-    <link rel="stylesheet" href="/static/css/layui.css">
+    <link rel="stylesheet" href="/static/js/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/LCalendar.css">
     <script src="/static/js/lib/htmlFontSize.js"></script>
     <script src="/static/js/lib/jquery-2.1.1.min.js"></script>
     <script src="/static/js/lib/jquery.tmpl.min.js"></script>
-    <script src="/static/js/lib/layer.js"></script>
-    <script src="/static/js/lib/layui.js"></script>
+    <script src="/static/js/lib/layer/layer.js"></script>
+    <script src="/static/js/lib/layui/layui.js"></script>
     <!--<script src="/static/js/lib/laydate/laydate.js"></script>-->
-    <!--<script src="/static/js/date.js"></script>-->
+    <script src="/static/js/lib/LCalendar.js"></script>
     <script src="/static/js/index.js"></script>
     <title>12345678</title>
-</head>
 
+
+</head>
 <body>
+
+<input type="hidden" id="date" readonly="readonly"/>
 <div class="warp">
-    <div class="content">
-        <!--<div class="contentList">
-            <div class="tit-img">
-                <img src="/tab-2.png" alt="" class="tit_img">
-            </div>
-            <table class="table">
-                <tbody id="list">
-                    <tr class="bg">
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr>
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr class="bg">
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr>
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr>
-                        <td width="30%">订单号</td>
-                        <td width="70%">
-                            <select class="sec">
-                                <option value="">请选择美甲师</option>
-                                <option value="1">王晓芃</option>
-                                <option value="2">王晓萌</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="30%">订单号</td>
-                        <td width="70%"><input type="text" id="time" placeholder="请选择时间"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="btn">确定</div>
-        </div>
-        <div class="contentList">
-            <div class="tit-img">
-                <img src="tab-2.png" alt="" class="tit_img">
-            </div>
-            <table class="table">
-                <tbody id="list">
-                    <tr class="bg">
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr>
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr class="bg">
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                    <tr>
-                        <td width="30%">订单号</td>
-                        <td width="70%">1</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="btn">确定</div>
-        </div>-->
-    </div>
+    <div id="make" style="display: inline-block;"></div>
+    <div id="order"></div>
+    <div id="record"></div>
     <ul class="tab">
         <li class="make activeTab">预约</li>
         <li class="order">订单</li>
@@ -103,19 +42,19 @@
 		</div>
 		<table class="table">
 			<tbody id="list">
-				<tr class="bg">
+				<tr>
 					<td width="30%">订单号</td>
 					<td width="70%">{{= order_number}}</td>
 				</tr>
-				<tr>
+				<tr class="bg">
 					<td width="30%">姓名</td>
 					<td width="70%">{{= name}}</td>
 				</tr>
-				<tr class="bg">
+				<tr>
 					<td width="30%">手机号</td>
 					<td width="70%">{{= phone}}</td>
 				</tr>
-				<tr>
+				<tr class="bg">
 					<td width="30%">项目名称</td>
 					<td width="70%">{{= projectName}}</td>
 				</tr>
@@ -123,44 +62,136 @@
 					<td width="30%">{{= remark}}师</td>
 					<td width="70%">
 						<select class="sec">
-							<option value="">请选择美甲师</option>
+							<option value="0">请选择{{= remark}}师</option>
 							<option value="1">王晓芃</option>
 							<option value="2">王晓萌</option>
 						</select>
 					</td>
 				</tr>
+                <tr class="bg">
+                    <td width="30%">订单状态</td>
+                    {{if order_status == 0}}
+                    <td width="70%">未完成</td>
+                    {{else}}
+                    <td width="70%">完成</td>
+                    {{/if}}
+                </tr>
 				<tr>
-					<td width="30%">服务时间</td>
-					<td width="70%"><input type="text" class="time" id="time" placeholder="请选择时间"></td>
-				</tr>
+                    <td width="30%">服务时间</td>
+                    <td width="70%">
+                    <input type="text" class="time" id="time" placeholder="请选择时间" readonly="readonly">
+                    </td>
+                </tr>
 			</tbody>
 		</table>
-		<div class="btn">确定</div>
+		<div class="makeBtn" data-num="{{= order_number}}">确定</div>
 	</div>
 
 </script>
 <!-- 订单列表模板 -->
 <script id="order-tpl" type="text/x-jquery-tmpl">
-    <tr>
-        <td>{{= $index+1}}</td>
-        <td>{{= create_time}}</td>
-        <td>{{= menu}}</td>
-        <td>{{= classify}}</td>
-        <td>{{= name}}</td>
-        <td>{{= operation}}</td>
-    </tr>
+    <div class="contentList">
+        <div class="tit-img">
+            <img src="{{= title_img}}" class="tit_img">
+        </div>
+        <table class="table">
+            <tbody id="list">
+                <tr class="bg">
+                    <td width="30%">订单号</td>
+                    <td width="70%">{{= order_number}}</td>
+                </tr>
+                <tr>
+                    <td width="30%">姓名</td>
+                    <td width="70%">{{= name}}</td>
+                </tr>
+                <tr class="bg">
+                    <td width="30%">手机号</td>
+                    <td width="70%">{{= phone}}</td>
+                </tr>
+                <tr>
+                    <td width="30%">项目名称</td>
+                    <td width="70%">{{= projectName}}</td>
+                </tr>
+                <tr class="bg">
+                    <td width="30%">支付状态</td>
+                    {{if pay_status == 0}}
+                    <td width="70%">未完成</td>
+                    {{else}}
+                    <td width="70%">完成</td>
+                    {{/if}}
+                </tr>
+                <tr >
+                    <td width="30%">服务时间</td>
+                    <td width="70%">{{= (servicing_time).replace("T", " ").replace(".000Z", " ")}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="orderBtn" data-num="{{= order_number}}">确定</div>
+    </div>
 
 </script>
 <!-- 历史记录列表模板 -->
 <script id="record-tpl" type="text/x-jquery-tmpl">
-    <tr>
-        <td>{{= $index+1}}</td>
-        <td>{{= create_time}}</td>
-        <td>{{= menu}}</td>
-        <td>{{= classify}}</td>
-        <td>{{= name}}</td>
-        <td>{{= operation}}</td>
-    </tr>
+    <div class="contentList">
+        <div class="tit-img">
+            <img src="{{= title_img}}" class="tit_img">
+        </div>
+        <table class="table">
+            <tbody id="list">
+                <tr class="bg">
+                    <td width="30%">订单号</td>
+                    <td width="70%">{{= order_number}}</td>
+                </tr>
+                <tr>
+                    <td width="30%">姓名</td>
+                    <td width="70%">{{= name}}</td>
+                </tr>
+                <tr class="bg">
+                    <td width="30%">手机号</td>
+                    <td width="70%">{{= phone}}</td>
+                </tr>
+                <tr>
+                    <td width="30%">项目名称</td>
+                    <td width="70%">{{= projectName}}</td>
+                </tr>
+                <tr class="bg">
+                    <td width="30%">{{= remark}}师</td>
+                    <td width="70%">
+                         {{if remark == 1}}
+                        王晓芃
+                        {{else}}
+                        王晓萌
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">价格</td>
+                    <td width="70%">{{= price}}</td>
+                </tr>
+                <tr class="bg">
+                    <td width="30%">服务时间</td>
+                    <td width="70%">{{= (servicing_time).replace("T", " ").replace(".000Z", " ")}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</script>
+<script>
+$(function(){
+    $("#make").on("click",".time",function () {
+       $(this).attr("id","dataTime").parents(".contentList").siblings(".contentList").find("input").removeAttr("id");
+       $("#date").trigger("click");
+    });
+
+   var calendar = new LCalendar();
+    calendar.init({
+        'trigger': '#date', //标签id
+        'type': 'datetime', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+        'minDate': (new Date().getFullYear()-1) + '-' + 1 + '-' + 1, //最小日期
+        'maxDate': (new Date().getFullYear()+5) + '-' + 12 + '-' + 31 //最大日期
+    });
+});
 
 </script>
 </body>

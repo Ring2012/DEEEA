@@ -40,6 +40,6 @@ App({
 
     globalData: {
         userInfo: null,
-        backendUrl: "http://127.0.0.1:8306/"//http://deeea.viphk.ngrok.org/
+        backendUrl: "http://127.0.0.1:8306"//http://deeea.viphk.ngrok.org/
     }
 })

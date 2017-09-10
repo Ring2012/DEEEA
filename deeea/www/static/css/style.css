@@ -7,8 +7,9 @@
     margin: 0 auto;
 }
 
-.content {
+#make,#order,#record {
     margin-bottom: 3rem;
+    display: none;
 }
 
 .contentList {
@@ -31,8 +32,8 @@
 }
 
 #list tr {
-    height: 1.35rem;
-    line-height: 1.35rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
     color: #888;
 }
 
@@ -61,7 +62,7 @@
 
 .tab li {
     display: inline-block;
-    width: 32.7%;
+    width: 32.6%;
     text-align: center;
     font-size: 0.65rem;
 }
@@ -71,7 +72,7 @@
     color: rgb(253, 82, 129);
 }
 
-.btn {
+.makeBtn,.orderBtn {
     width: 94%;
     height: 1.5rem;
     line-height: 1.5rem;

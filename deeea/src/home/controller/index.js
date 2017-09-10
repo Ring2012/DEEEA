@@ -17,8 +17,8 @@ export default class extends Base {
      *
      */
     async makeAction() {
-        let page = this.get("page") || 1;
-        let size = this.get("size") || 4;
+        let page = this.post("page") || 1;
+        let size = this.post("size") || 4;
         let list = await this.model('users').where({
             order_status: 0
         }).page(page, size).order("timer DESC").countSelect();
@@ -33,10 +33,13 @@ export default class extends Base {
      */
     async makesAction() {
         let user = {};
-        user.beautician = this.get("beautician");
+        let order_number = this.post("order_number");
+        user.beautician = this.post("beautician");
         user.order_status = 1;
-        user.servicing_time = this.get("servicing_time");
-        let list = await this.model('users').add(user);
+        user.servicing_time = this.post("servicing_time");
+        let list = await this.model('users').where({
+            order_number: order_number
+        }).update(user);
         return this.success(user);
     }
 
@@ -49,8 +52,8 @@ export default class extends Base {
      *
      */
     async orderAction() {
-        let page = this.get("page") || 1;
-        let size = this.get("size") || 4;
+        let page = this.post("page") || 1;
+        let size = this.post("size") || 4;
         let list = await this.model('users').where({
             pay_status: 0
         }).page(page, size).order("timer DESC").countSelect();
@@ -64,8 +67,11 @@ export default class extends Base {
      */
     async ordersAction() {
         let user = {};
-        user.order_status = 1;
-        let list = await this.model('users').add(user);
+        let order_number = this.post("order_number");
+        user.pay_status = 1;
+        let list = await this.model('users').where({
+            order_number: order_number
+        }).update(user);
         return this.success(user);
     }
 
@@ -78,8 +84,8 @@ export default class extends Base {
      *
      */
     async recordAction() {
-        let page = this.get("page") || 1;
-        let size = this.get("size") || 4;
+        let page = this.post("page") || 1;
+        let size = this.post("size") || 4;
         let list = await this.model('users').where({
             order_status: 1,
             pay_status: 1
