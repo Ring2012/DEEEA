@@ -15,8 +15,8 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#272636",
-    "selectedColor": "rgb(253, 82, 129)",
+    "color": "#A1A1A1",
+    "selectedColor": "#06BB06",
     "backgroundColor": "#fff",
     "borderStyle": "black",
     "list": [
@@ -24,19 +24,19 @@
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "image/ico/home.png",
-        "selectedIconPath": "image/ico/home.png"
+        "selectedIconPath": "image/ico/home_1.png"
       },
       {
         "pagePath": "pages/order/order",
         "text": "我的订单",
         "iconPath": "image/ico/order.png",
-        "selectedIconPath": "image/ico/order.png"
+        "selectedIconPath": "image/ico/order_1.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "我的预约",
         "iconPath": "image/ico/mine.png",
-        "selectedIconPath": "image/ico/mine.png"
+        "selectedIconPath": "image/ico/mine_1.png"
       }
     ]
   }
