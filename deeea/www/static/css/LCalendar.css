@@ -1,17 +1,9 @@
 /**
  * LCalendar移动端日期时间选择控件
  * 
- * version:1.7.1
+ * version:1.7.2
  * 
- * author:黄磊
- * 
- * git:https://github.com/xfhxbb/LCalendar
- * 
- * Copyright 2016
- * 
- * Licensed under MIT
- * 
- * 最近修改于： 2016-6-12 17:22:20
+ * 最近修改于： 2017-09-12 17:22:20
  */
 .gearDate {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -167,8 +159,8 @@
     position: absolute;
     right: 0;
     top: 0;
-    font-size: .8em;
-    line-height: 2.5em
+    font-size: 0.7em;
+    line-height: 3em
 }
 
 .date_roll>div:nth-child(3) .date_grid>div {

@@ -55,6 +55,7 @@ export default class extends Base {
         let page = this.post("page") || 1;
         let size = this.post("size") || 4;
         let list = await this.model('users').where({
+            order_status: 1,
             pay_status: 0
         }).page(page, size).order("timer DESC").countSelect();
         return this.success(list);
