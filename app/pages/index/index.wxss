@@ -2,6 +2,7 @@
 
 .page {
   background: #e9e9e9;
+  overflow-x: hidden;
 }
 
 /*轮播-banner  */
@@ -105,8 +106,8 @@
   margin: -10rpx 0 0 200rpx;
   background: rgb(253, 82, 129);
   color: #fff;
-  font-size: 24rpx;
-  padding: 8rpx 14rpx;
+  font-size: 30rpx;
+  padding: 12rpx 14rpx;
   border: 1px solis #fff;
   border-radius: 8rpx;
 }
@@ -125,14 +126,14 @@
 
 .tab-item {
   padding: 20rpx 40rpx;
-  font-size: 28rpx;
+  font-size: 32rpx;
   display: inline-block;
   color: #888;
 }
 
 .itrmActive {
   color: rgb(81, 187, 182);
-  font-size: 30rpx;
+  font-size: 34rpx;
   border-bottom: 2px solid rgb(81, 187, 182);
 }
 
@@ -167,7 +168,7 @@
 
 .tc-title, .tc-price {
   display: inline-block;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .tc-title {

@@ -5,7 +5,7 @@ Page({
         bannerUrls: [],//banner url
         recommend: [],//推荐列表
         tab: [],//分类
-        tabItem: 5,//默认类
+        tabItem: 4,//默认类
         tabContent: [],//分类列表
         show: true,
         hidden: false,

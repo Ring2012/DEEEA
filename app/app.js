@@ -40,6 +40,6 @@ App({
 
     globalData: {
         userInfo: null,
-        backendUrl: "127.0.0.1:8360"
+        backendUrl: "http://47.94.243.136:8306"
     }
 })

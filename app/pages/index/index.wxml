@@ -15,13 +15,13 @@
         <image class="type-img" src="../img/type-1.png"></image>
         <text class="type-text">美容{{type}}</text>
       </view>
-      <view class="flex-item" data-type="5" bindtap="detailTap">
+      <view class="flex-item" data-type="2" bindtap="detailTap">
+        <image class="type-img" src="../img/type-3.png"></image>
+        <text class="type-text">养生</text>
+      </view>
+      <view class="flex-item" data-type="4" bindtap="detailTap">
         <image class="type-img" src="../img/type-2.png"></image>
         <text class="type-text">美甲</text>
-      </view>
-      <view class="flex-item" data-type="3" bindtap="detailTap">
-        <image class="type-img" src="../img/type-3.png"></image>
-        <text class="type-text">塑身</text>
       </view>
       <view class="flex-item" data-type="0" bindtap="detailTap">
         <image class="type-img" src="../img/type-4.png"></image>
